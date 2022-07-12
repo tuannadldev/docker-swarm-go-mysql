@@ -1,0 +1,45 @@
+version: "3.3"
+
+services:
+  server_api1:
+    image: tuannadldev/goapi:1.2
+    hostname: go-api-1.com.vn
+    ports:
+      - 3001:3000
+    deploy:
+      replicas: 5
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: '150MB'
+        reservations: # gioi han toi thieu
+          cpus: '0.25'
+          memory: '50MB'
+      restart_policy:
+        condition: on-failure
+    networks:
+      - mynetworkoverlayall
+  server_api2:
+    image: tuannadldev/goapi:1.3
+    hostname: go-api-2.com.vn
+    ports:
+      - 3002:3000
+    deploy:
+      replicas: 5
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: '150MB'
+        reservations: # gioi han toi thieu
+          cpus: '0.25'
+          memory: '50MB'
+      restart_policy:
+        condition: on-failure
+    networks:
+      - mynetworkoverlayall
+
+networks:
+  mynetworkoverlayall:
+    driver: overlay
+
+
