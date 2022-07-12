@@ -2,7 +2,7 @@ version: "3.3"
 
 services:
   server_api1:
-    image: tuannadldev/goapi:1.2
+    image: tuannadldev/goapi:1.4
     hostname: go-api-1.com.vn
     ports:
       - 3001:3000
@@ -37,6 +37,24 @@ services:
         condition: on-failure
     networks:
       - mynetworkoverlayall
+
+  mysqldb:
+    image: mysql:5.7
+    restart: always
+    hostname: mysqlhost.dev
+    environment:
+      - "MYSQL_ROOT_PASSWORD=admin"
+      - "MYSQL_DATABASE=golangdemo"
+    ports:
+      - "3306:3306"
+    volumes:
+      - "./rdbmyssql/mysql56:/var/lib/mysql"
+    networks:
+      - mynetworkoverlayall
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
 
 networks:
   mynetworkoverlayall:

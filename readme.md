@@ -1,0 +1,10 @@
+# Docker swarm with golang & mysql example
+
+#### image was pushed on docker hub 
+~~~
+version 1.2 - 1.3 not use db
+version 1.4 connect with mysql
+goapi write by gorilla / gorm
+use dep and go module
+docker stack deploy -c=docker-compose.yaml full_stack
+~~~
