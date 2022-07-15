@@ -13,3 +13,5 @@ connect from go to mysql with service name
 gorm.Open("mysql","root:admin@tcp(mysqldb:3306)/golangdemo?charset=utf8&parseTime=True&loc=Local")
 
 ~~~
+
+# Use share volume with third party

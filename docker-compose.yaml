@@ -51,7 +51,8 @@ services:
       - "MYSQL_DATABASE=golangdemo"
     ports:
       - "3306:3306"
-
+    volumes:
+      - datasource:/var/lib/mysql
     networks:
       - mynetworkoverlayall
     deploy:
@@ -70,5 +71,10 @@ volumes:
       type: none
       device: "/home/data/"
       o: bind
-
+  datasource:
+    driver: local
+    driver_opts:
+      type: none
+      device: "/home/rdbmyssql/mysql56/"
+      o: bind
 
